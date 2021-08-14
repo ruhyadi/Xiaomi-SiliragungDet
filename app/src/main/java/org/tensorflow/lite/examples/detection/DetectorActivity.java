@@ -167,13 +167,10 @@ public class DetectorActivity<ResultTracker> extends CameraActivity implements O
 
     // TAMBAHAN
     // audio
-    final MediaPlayer audio_masker = MediaPlayer.create(this, R.raw.bermasker);
-    final MediaPlayer audio_tidak = MediaPlayer.create(this, R.raw.tidak);
-    final MediaPlayer audio_salah = MediaPlayer.create(this, R.raw.salah);
+    final MediaPlayer audio_masker = MediaPlayer.create(DetectorActivity.this, R.raw.bermasker);
+    final MediaPlayer audio_tidak = MediaPlayer.create(DetectorActivity.this, R.raw.tidak);
+    final MediaPlayer audio_salah = MediaPlayer.create(DetectorActivity.this, R.raw.salah);
 
-    //delay
-    Handler handler = new Handler();
-    final int DELAY = 1000; // one second
 
     // No mutex needed as this method is not reentrant.
     if (computingDetection) {
@@ -229,27 +226,27 @@ public class DetectorActivity<ResultTracker> extends CameraActivity implements O
 
                 //tambahan
                 if (result.getTitle().equals("with_mask")) {
-                  textStatusMask = "Bermasker";
-                  audio_masker.start();
-
+                  textStatusMask = "Silahkan Masuk";
+                  if (audio_masker != null) {
+                    audio_masker.start();
+                  }
                 } else if (result.getTitle().equals("without_mask")) {
-                  textStatusMask = "Tidak Bermasker";
-//                  audio_masker.stop();
-//                  audio_salah.stop();
-
-//                  audio_masker.start();
+                  textStatusMask = "Mohon Pakai Masker";
+                  if (audio_tidak != null) {
+                    audio_tidak.start();
+                  }
                 } else {
-                  textStatusMask = "Pemakaian Salah";
-//                  audio_masker.stop();
-//                  audio_tidak.stop();
-
-//                  audio_salah.start();
+                  textStatusMask = "Mohon Perbaiki Masker";
+                  if (audio_salah != null) {
+                    audio_salah.start();
+                  } 
                 }
                 result.setLocation(location);
                 mappedRecognitions.add(result);
 
                 try {
                   statusMasker.setText(textStatusMask);
+
                 } catch (Exception e) {
                   continue;
                 }
@@ -265,9 +262,9 @@ public class DetectorActivity<ResultTracker> extends CameraActivity implements O
                 new Runnable() {
                   @Override
                   public void run() {
-                    showFrameInfo(previewWidth + "x" + previewHeight);
-                    showCropInfo(cropCopyBitmap.getWidth() + "x" + cropCopyBitmap.getHeight());
-                    showInference(lastProcessingTimeMs + "ms");
+                    //showFrameInfo(previewWidth + "x" + previewHeight);
+                    //showCropInfo(cropCopyBitmap.getWidth() + "x" + cropCopyBitmap.getHeight());
+                    //showInference(lastProcessingTimeMs + "ms");
                   }
                 });
           }

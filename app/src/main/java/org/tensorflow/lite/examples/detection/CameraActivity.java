@@ -159,9 +159,9 @@ public abstract class CameraActivity<result> extends AppCompatActivity
           public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
         });
 
-    frameValueTextView = findViewById(R.id.frame_info);
-    cropValueTextView = findViewById(R.id.crop_info);
-    inferenceTimeTextView = findViewById(R.id.inference_info);
+//    frameValueTextView = findViewById(R.id.frame_info);
+//    cropValueTextView = findViewById(R.id.crop_info);
+//    inferenceTimeTextView = findViewById(R.id.inference_info);
 
     apiSwitchCompat.setOnCheckedChangeListener(this);
 
@@ -525,15 +525,15 @@ public abstract class CameraActivity<result> extends AppCompatActivity
   }
 
   protected void showFrameInfo(String frameInfo) {
-    frameValueTextView.setText(frameInfo);
+    //frameValueTextView.setText(frameInfo);
   }
 
   protected void showCropInfo(String cropInfo) {
-    cropValueTextView.setText(cropInfo);
+    //cropValueTextView.setText(cropInfo);
   }
 
   protected void showInference(String inferenceTime) {
-    inferenceTimeTextView.setText(inferenceTime);
+    //inferenceTimeTextView.setText(inferenceTime);
   }
 
   protected abstract void processImage();

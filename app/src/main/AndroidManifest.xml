@@ -11,14 +11,14 @@
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="Face Mask Detection"
+        android:label="Masker"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.ObjectDetection">
 
         <activity
             android:name=".DetectorActivity"
-            android:label="Face Mask Detection"
+            android:label="Masker"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
